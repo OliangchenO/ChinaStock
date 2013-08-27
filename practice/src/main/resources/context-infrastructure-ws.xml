@@ -1,0 +1,30 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans 
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+
+	<bean id="air.group.SpringService4Ctrip" class="org.apache.cxf.jaxws.JaxWsProxyFactoryBean">
+		<property name="serviceClass"
+			value="com.springtour.grouptravel.SpringService4Ctrip" />
+		<property name="address"
+			value="http://218.78.217.82:9999/AirSalesService/springairlines/remoteservice/ctrip" />
+	</bean>
+
+	<bean id="air.group.SpringService4CtripWsFacade" class="com.springtour.grouptravel.SpringService4Ctrip"
+		factory-bean="air.group.SpringService4Ctrip" factory-method="create" />
+
+	<bean id="stock.ChinaStockWebServiceSoap" class="org.apache.cxf.jaxws.JaxWsProxyFactoryBean">
+		<property name="serviceClass"
+			value="com.springtour.stockservice.ChinaStockWebServiceSoap" />
+		<property name="address"
+			value="http://webservice.webxml.com.cn/WebServices/ChinaStockWebService.asmx" />
+	</bean>
+
+	<bean id="stock.ChinaStockWebServiceSoapWsFacade" class="com.springtour.grouptravel.SpringService4Ctrip"
+		factory-bean="stock.ChinaStockWebServiceSoap" factory-method="create" />
+
+
+</beans>   
